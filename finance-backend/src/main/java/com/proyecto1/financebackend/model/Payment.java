@@ -9,6 +9,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
+    @OneToOne
+    Category category;
     Date date;
     Float paid;
     Float billed;
@@ -29,6 +31,14 @@ public class Payment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Date getDate() {
