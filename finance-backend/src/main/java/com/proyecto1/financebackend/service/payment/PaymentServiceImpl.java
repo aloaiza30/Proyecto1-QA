@@ -1,6 +1,5 @@
 package com.proyecto1.financebackend.service.payment;
 
-import com.proyecto1.financebackend.model.Category;
 import com.proyecto1.financebackend.model.Payment;
 import com.proyecto1.financebackend.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
