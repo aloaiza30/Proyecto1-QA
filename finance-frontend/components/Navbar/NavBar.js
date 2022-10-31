@@ -1,10 +1,14 @@
 import { Row } from 'react-bootstrap';
-import { ArrowRight, Person, PersonCircle } from 'react-bootstrap-icons';
+import { ArrowRight, BoxArrowRight, Person, PersonCircle } from 'react-bootstrap-icons';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import UserContext from '../UserContext';
+import { useContext } from 'react';
 
 function AppNavBar() {
+    const { signOut } = useContext(UserContext);
+
     return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#206ccb"}}>
         <Container>
@@ -17,8 +21,10 @@ function AppNavBar() {
             <Nav.Link href="#wishlist">Wishlist</Nav.Link>
             <Nav.Link href="#settings">Settings</Nav.Link>
             <Nav.Link href="#profile" className='ml-auto'>
-                <PersonCircle size={30} style={{padding: "0px 10px 0px 0px"}}/>
-                John Doe
+                <PersonCircle size={32} style={{padding: "0px 10px 0px 0px"}}/>
+            </Nav.Link>
+            <Nav.Link onClick={signOut}>
+                <BoxArrowRight size={30}/>
             </Nav.Link>
             </Nav>
         </Navbar.Collapse>

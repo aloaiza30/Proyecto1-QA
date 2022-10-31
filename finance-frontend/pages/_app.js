@@ -9,7 +9,15 @@ import { useEffect } from "react";
 
 export default class MyApp extends App {
   state = {
-    user: null
+    id: null,
+    name: null,
+    lastname: null,
+    email: null,
+    monthlyEarnings: null,
+    categories: null,
+    payments: null,
+    savings: null,
+    wishlist: null,
   };
 
   componentDidMount = () => {
@@ -23,21 +31,21 @@ export default class MyApp extends App {
     }
   };
 
-  signIn = (username, password) => {
-    localStorage.setItem('coolapp-user', username);
+  signIn = (user) => {
+    localStorage.setItem('user', username);
 
     this.setState(
       {
-        user: username
+        userName: username
       },
       () => {
-        Router.push('/reports');
+        Router.push('/report');
       }
     );
   };
 
   signOut = () => {
-    localStorage.removeItem('coolapp-user');
+    localStorage.removeItem('user');
     this.setState({
       user: null
     });
