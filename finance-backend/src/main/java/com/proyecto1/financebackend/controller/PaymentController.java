@@ -18,11 +18,11 @@ public class PaymentController {
 
     @PostMapping("/add")
     public ResponseEntity<String> add(@RequestBody Payment payment){
-        Payment responseCategory = paymentService.savePayment(payment);
-        if (responseCategory == null) {
-            return new ResponseEntity<>("Error while saving category", HttpStatus.CONFLICT);
+        Payment responsePayment = paymentService.savePayment(payment);
+        if (responsePayment == null) {
+            return new ResponseEntity<>("Error while saving payment", HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<>("Category added successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Payment added successfully", HttpStatus.OK);
     }
 
     @GetMapping("/getAll")
