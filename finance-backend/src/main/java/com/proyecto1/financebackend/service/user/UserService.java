@@ -10,6 +10,8 @@ import java.util.Optional;
 
 public interface UserService {
     public User saveUser(User user);
-    public Optional<List<Category>> getCategories(Integer id);
+    public Optional<List<Category>> getUserCategories(Integer id);
+    public Optional<User> getUserByEmail(String email);
     }
+
 

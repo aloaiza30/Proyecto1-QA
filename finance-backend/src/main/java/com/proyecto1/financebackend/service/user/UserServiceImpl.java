@@ -21,11 +21,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<List<Category>> getCategories(Integer id) {
+    public Optional<List<Category>> getUserCategories(Integer id) {
         Optional<User> user = userRepository.findAllById(Collections.singleton(id)).stream().findFirst();
         return user.map(User::getCategories);
-
     }
 
-
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.selectByEmail(email).stream().findFirst();
+    }
 }

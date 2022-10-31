@@ -11,6 +11,7 @@ public class User {
     Integer id;
     String name;
     String lastName;
+    String email;
     String password; // ToDo Hash Password
     Float monthlyEarnings;
     @OneToMany(cascade = CascadeType.REMOVE)
@@ -21,6 +22,9 @@ public class User {
     List<Savings> savings;
     @OneToMany(cascade = CascadeType.REMOVE)
     List<Product> wishlist;
+
+    public User() {
+    }
 
     public Integer getId() {
         return id;
@@ -52,6 +56,14 @@ public class User {
 
     public void setMonthlyEarnings(Float monthlyEarnings) {
         this.monthlyEarnings = monthlyEarnings;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Category> getCategories() {
