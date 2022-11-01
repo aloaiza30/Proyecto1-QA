@@ -21,22 +21,22 @@ export default class MyApp extends App {
   };
 
   componentDidMount = () => {
-    const user = localStorage.getItem(user);
-    if (user) {
+    const email = localStorage.getItem(email);
+    if (email) {
       this.setState({
-        user
+        email
       });
     } else if (!Router.pathname == "/register") {
       Router.push('/login');
     }
   };
 
-  signIn = (user) => {
-    localStorage.setItem('user', username);
+  signIn = (userEmail) => {
+    localStorage.setItem('email', userEmail);
 
     this.setState(
       {
-        userName: username
+        email: userEmail
       },
       () => {
         Router.push('/report');
@@ -45,9 +45,9 @@ export default class MyApp extends App {
   };
 
   signOut = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('email');
     this.setState({
-      user: null
+      email: null
     });
     Router.push('/login');
   };

@@ -17,13 +17,22 @@ function LoginForm() {
         e.preventDefault();
         if (userEmail != '' || password != '') {
             let data = {'email': userEmail, 'password': password};
+            console.log(JSON.stringify(data));
 
-            axios.post("http://localhost:8080/user/login", {
-                data: JSON.stringify(data)
-            }).then(() => {
-                signIn(response.data?.message);
+            axios.post("http://localhost:8080/user/login", 
+                JSON.stringify(data), {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            ).then(() => {
+                signIn(userEmail);
             }).catch(error => {
-                setMessage(error.response.data?.message)
+                if (error.response) {
+                    setMessage(error.response.data?.message)
+                } else {
+                    setMessage(error.message)
+                }
             });
         } else {
             setMessage('Please enter email and password')
