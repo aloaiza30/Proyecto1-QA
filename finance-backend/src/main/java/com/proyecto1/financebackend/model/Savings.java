@@ -20,7 +20,7 @@ public class Savings {
         return id;
     }
 
-    public void setId(Integer id) {q
+    public void setId(Integer id) {
         this.id = id;
     }
 
