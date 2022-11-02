@@ -9,7 +9,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     Category category;
     Date date;
     Float paid;

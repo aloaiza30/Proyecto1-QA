@@ -6,8 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import UserContext from '../UserContext';
 import { useContext } from 'react';
 
-function AppNavBar({name}, {lastname}) {
-    const { signOut } = useContext(UserContext);
+function AppNavBar() {
+    const { id, userName, lastName, signOut } = useContext(UserContext);
 
     return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#206ccb"}}>
@@ -17,17 +17,18 @@ function AppNavBar({name}, {lastname}) {
         <Navbar.Collapse className= "d-flex" id="responsive-navbar-nav" style={{fontSize: "18px"}}>
             <Nav className='d-flex flex-fill nav-center justify-content-around'>
             <Nav.Link href="#invoices">Invoices</Nav.Link>
-            <Nav.Link href="#savings">Savings</Nav.Link>
+            <Nav.Link href="/savings">Savings</Nav.Link>
             <Nav.Link href="#wishlist">Wishlist</Nav.Link>
             <Nav.Link href="#settings">Settings</Nav.Link>
             <Nav.Item>
                 <Row className='flex-nowrap'>
                     <Nav.Link href="#profile" className='ml-auto'>
                         <PersonCircle size={32} style={{padding: "0px 10px 0px 0px"}}/>
-                        {localStorage.getItem("name") ? localStorage.getItem("name") + " " + localStorage.getItem("lastname") : ""}
+                        { userName + " " + lastName }
+                        {/* {localStorage.getItem("name") + " " + localStorage.getItem("lastname")} */}
                     </Nav.Link>
                     <Nav.Link onClick={signOut}>
-                        <BoxArrowRight size={28}/>
+                        <BoxArrowRight size={30}/>
                     </Nav.Link>
                 </Row>
             </Nav.Item>

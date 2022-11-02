@@ -9,8 +9,8 @@ import axios from 'axios';
 
 function RegisterForm() {
     const { signIn } = useContext(UserContext);
-    const [name, setName] = useState('');
-    const [lastname, setLastname] = useState('');
+    const [userName, setUserName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [userEmail, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [monthlyEarnings, setMonthlyEarnings] = useState(0);
@@ -18,8 +18,8 @@ function RegisterForm() {
 
     async function autenticate(e) {
         e.preventDefault();
-        if (name != '' || lastname != '' || userEmail != '' || password != '' || monthlyEarnings != 0) {
-            let data = {'name': name, 'lastName': lastname, 'email': userEmail, 'password': password, 'monthlyEarnings': parseFloat(monthlyEarnings), categories: [], payments: [], savings: [], wishlist: []};
+        if (userName != '' || lastName != '' || userEmail != '' || password != '' || monthlyEarnings != 0) {
+            let data = {'userName': userName, 'lastName': lastName, 'email': userEmail, 'password': password, 'monthlyEarnings': parseFloat(monthlyEarnings), categories: [], payments: [], savings: [], wishlist: []};
 
             axios.post("http://localhost:8080/user/register", JSON.stringify(data),
                 {
@@ -52,11 +52,11 @@ function RegisterForm() {
                         <Row>
                             <Form.Group className="mb-3 w-50">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control className='p-2' type="text" placeholder="Enter your name" onChange={e => setName(e.target.value)} />
+                                <Form.Control className='p-2' type="text" placeholder="Enter your name" onChange={e => setUserName(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="mb-3 w-50">
                                 <Form.Label>Lastname</Form.Label>
-                                <Form.Control className='p-2' type="text" placeholder="Enter your lastname" onChange={e => setLastname(e.target.value)}/>
+                                <Form.Control className='p-2' type="text" placeholder="Enter your lastname" onChange={e => setLastName(e.target.value)}/>
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="formBasicEmail">

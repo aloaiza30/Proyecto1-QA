@@ -1,10 +1,9 @@
-package com.proyecto1.financebackend.service.Savings;
+package com.proyecto1.financebackend.service.savings;
 
 import com.proyecto1.financebackend.model.Savings;
 import com.proyecto1.financebackend.repository.SavingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.proyecto1.financebackend.service.savings.SavingsService;
 
 import java.util.List;
 

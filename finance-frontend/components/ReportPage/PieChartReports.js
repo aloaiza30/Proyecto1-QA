@@ -1,10 +1,14 @@
 import { Container, ModalTitle, Row } from "react-bootstrap";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 import { Pie, Doughnut } from 'react-chartjs-2';
+import { useContext } from "react";
+import UserContext from "../UserContext";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-function PieChartReports({categories, savings}) {
+function PieChartReports() {
+    const {categories, savings} = useContext(UserContext);
+    
     return (
         <Container className="w-75">
             <Row>

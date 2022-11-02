@@ -1,6 +1,7 @@
 package com.proyecto1.financebackend.service.user;
 
 import com.proyecto1.financebackend.model.Category;
+import com.proyecto1.financebackend.model.Savings;
 import com.proyecto1.financebackend.model.User;
 import com.proyecto1.financebackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class UserServiceImpl implements UserService {
     public Optional<List<Category>> getUserCategories(Integer id) {
         Optional<User> user = userRepository.findAllById(Collections.singleton(id)).stream().findFirst();
         return user.map(User::getCategories);
+    }
+
+    @Override
+    public Optional<Savings> getUserSavings(Integer id) {
+        Optional<User> user = userRepository.findAllById(Collections.singleton(id)).stream().findFirst();
+        return user.map(User::getSavings);
     }
 
     @Override

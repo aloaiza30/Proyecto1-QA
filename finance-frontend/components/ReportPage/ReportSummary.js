@@ -11,6 +11,8 @@ import {
   } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { ExclamationCircleFill } from 'react-bootstrap-icons';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
 ChartJS.register(
     CategoryScale,
@@ -21,7 +23,9 @@ ChartJS.register(
     Legend
   );
 
-function ReportSummary({categories}) {
+function ReportSummary() {
+    const { categories } = useContext(UserContext);
+    console.log("🚀 ~ file: ReportSummary.js ~ line 28 ~ ReportSummary ~ categories", categories);
     
     return (
         <Container>

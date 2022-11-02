@@ -9,18 +9,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    String name;
+    String userName;
     String lastName;
     String email;
     String password; // ToDo Hash Password
     Float monthlyEarnings;
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.ALL)
+    Savings savings;
+    @OneToMany(cascade = CascadeType.ALL)
     List<Category> categories;
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     List<Payment> payments;
-    @OneToMany(cascade = CascadeType.REMOVE)
-    List<Savings> savings;
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     List<Product> wishlist;
 
     public User() {
@@ -30,12 +30,12 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
     public String getLastName() {
@@ -74,6 +74,14 @@ public class User {
         this.categories = categories;
     }
 
+    public Savings getSavings() {
+        return savings;
+    }
+
+    public void setSavings(Savings savings) {
+        this.savings = savings;
+    }
+
     public List<Payment> getPayments() {
         return payments;
     }
@@ -82,13 +90,6 @@ public class User {
         this.payments = payments;
     }
 
-    public List<Savings> getSavings() {
-        return savings;
-    }
-
-    public void setSavings(List<Savings> savings) {
-        this.savings = savings;
-    }
 
     public List<Product> getWishlist() {
         return wishlist;

@@ -5,19 +5,17 @@ import App from 'next/app';
 import Router from 'next/router';
 import UserContext from '../components/UserContext';
 
-import { useEffect } from "react";
-
 export default class MyApp extends App {
   state = {
-    id: null,
-    name: null,
-    lastname: null,
-    email: null,
-    monthlyEarnings: null,
-    categories: null,
-    payments: null,
-    savings: null,
-    wishlist: null,
+    id: 0,
+    userName: '',
+    lastName: '',
+    email: '',
+    monthlyEarnings: 0,
+    categories: [],
+    payments: [],
+    savings: [],
+    wishlist: [],
   };
 
   componentDidMount = () => {
@@ -33,18 +31,26 @@ export default class MyApp extends App {
 
   signIn = (jsonData) => {
     localStorage.setItem('id', jsonData.id);
-    localStorage.setItem('name', jsonData.name);
-    localStorage.setItem('lastname', jsonData.lastName);
+    localStorage.setItem('userName', jsonData.userName);
+    localStorage.setItem('lastName', jsonData.lastName);
     localStorage.setItem('email', jsonData.email);
-    localStorage.setItem('monthlyEarnings', jsonData.monthlyEarnings)
+    localStorage.setItem('monthlyEarnings', jsonData.monthlyEarnings);
+    localStorage.setItem('categories', jsonData.categories);
+    localStorage.setItem('payments', jsonData.payments);
+    localStorage.setItem('savings', jsonData.savings);
+    localStorage.setItem('wishlist', jsonData.wishlist);
 
     this.setState(
       {
         id: jsonData.id,
-        name: jsonData.name,
-        lastname: jsonData.lastName,
+        userName: jsonData.userName,
+        lastName: jsonData.lastName,
         email: jsonData.email,
         monthlyEarnings: jsonData.monthlyEarnings,
+        categories: jsonData.categories,
+        payments: jsonData.payments,
+        savings: jsonData.savings,
+        wishlist: jsonData.wishlist,
       },
       () => {
         Router.push('/report');
@@ -53,29 +59,28 @@ export default class MyApp extends App {
   };
 
   signOut = () => {
+    Router.push('/login');
     localStorage.clear();
     this.setState({
-      id: null,
-      name: null,
-      lastname: null,
-      email: null,
-      monthlyEarnings: null,
-      categories: null,
-      payments: null,
-      savings: null,
-      wishlist: null,
+      id: 0,
+      userName: '',
+      lastName: '',
+      email: '',
+      monthlyEarnings: 0,
+      categories: [],
+      payments: [],
+      savings: [],
+      wishlist: [],
     });
-    Router.push('/login');
   };
 
   render() {
     const { Component, pageProps } = this.props;
 
     return (
-      <UserContext.Provider value={{ id: this.state.id, username: this.state.username, lastname: this.state.lastname,
+      <UserContext.Provider value={{ id: this.state.id, userName: this.state.userName, lastName: this.state.lastName,
                                      email: this.state.email, monthlyEarnings: this.state.monthlyEarnings, categories: this.state.categories,
-                                     payments: this.state.payments, savings: this.state.savings, wishlist: this.state.wishlist, 
-                                     signIn: this.signIn, signOut: this.signOut}}>
+                                     payments: this.state.payments, savings: this.state.savings, wishlist: this.state.wishlist, signIn: this.signIn, signOut: this.signOut}}>
         <Component {...pageProps} />
       </UserContext.Provider>
     );
