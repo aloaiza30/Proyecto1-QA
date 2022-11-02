@@ -17,19 +17,17 @@ function LoginForm() {
         e.preventDefault();
         if (userEmail != '' || password != '') {
             let data = {'email': userEmail, 'password': password};
-            console.log(JSON.stringify(data));
-
             axios.post("http://localhost:8080/user/login", 
                 JSON.stringify(data), {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 }
-            ).then(() => {
-                signIn(userEmail);
+            ).then( res => {
+                signIn(res.data);
             }).catch(error => {
                 if (error.response) {
-                    setMessage(error.response.data?.message)
+                    setMessage(error.response.data)
                 } else {
                     setMessage(error.message)
                 }

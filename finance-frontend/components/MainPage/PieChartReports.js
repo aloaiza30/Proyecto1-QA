@@ -4,17 +4,17 @@ import { Pie, Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-function PieChartReports() {
+function PieChartReports({categories, savings}) {
     return (
         <Container className="w-75">
             <Row>
                 <ModalTitle className="p-3 fw-bold">Monthly Expenses</ModalTitle>
                 <Container className="w-50" style={{padding: "0px 50px 50px 0px"}}>
                     <Pie className="ml-auto" data={{
-                        labels: ["Car", "House", "Food", "Entertainment"],
+                        labels: categories.map(category => category.name), //["Car", "House", "Food", "Entertainment"],
                         datasets: [{
                             label: "Total $ Spent",
-                            data: [450, 1300, 57, 80],
+                            data: categories.map(category => category.totalSpent),
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.5)',
                                 'rgba(54, 162, 235, 0.5)',
@@ -50,7 +50,7 @@ function PieChartReports() {
                         labels: ["Savings", "Remaining"],
                         datasets: [{
                             label: "Total $ Saved",
-                            data: [450, 1300],
+                            data: [savings.totalSavings, savings.goal - savings.totalSavings],
                             backgroundColor: [
                                 'rgba(54, 162, 235, 0.5)',
                                 'rgba(255, 99, 132, 0.5)',

@@ -2,29 +2,54 @@ import { Container } from "react-bootstrap";
 import PieChartReports from "../components/MainPage/PieChartReports";
 import ReportSummary from "../components/MainPage/ReportSummary";
 import AppNavBar from "../components/Navbar/NavBar";
+//import UserContext from '../UserContext';
+import { useContext, useState, useEffect } from 'react';
 
-function Report( {reports} ) {
+import axios from 'axios';
+
+function Report() {
+    const [userCategories, setUserCategories] = useState([]);
+    const [userSavings, setUserSavings] = useState([]);
+    const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/user/getCategories?id=${localStorage.getItem("id")}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        ).then( res => {
+            setUserCategories(res.data);
+        }).catch(error => {
+            if (error.response) {
+                setMessage(error.response.data)
+            } else {
+                setMessage(error.message)
+            }
+        });
+        axios.get(`http://localhost:8080/user/getSavings?id=${localStorage.getItem("id")}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        ).then( res => {
+            setUserSavings(res.data);
+        }).catch(error => {
+            if (error.response) {
+                setMessage(error.response.data)
+            } else {
+                setMessage(error.message)
+            }
+        });
+    }, []);
+
     return (
         <><AppNavBar />
-        <PieChartReports />
-        <ReportSummary />
+        <PieChartReports categories={userCategories} savings={userSavings}/>
+        <ReportSummary categories={userCategories}/>
         </>
         
 
     );
 }
 export default Report;
-
-// export async function getServerSideProps() {
-//     // Call an external API endpoint to get posts
-//     const res = await fetch('https://.../posts')
-//     const reports = await res.json()
-  
-//     // By returning { props: { posts } }, the Blog component
-//     // will receive `posts` as a prop at build time
-//     return {
-//       props: {
-//         reports,
-//       },
-//     }
-//   }

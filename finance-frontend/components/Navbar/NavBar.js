@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import UserContext from '../UserContext';
 import { useContext } from 'react';
 
-function AppNavBar() {
+function AppNavBar({name}, {lastname}) {
     const { signOut } = useContext(UserContext);
 
     return (
@@ -20,12 +20,17 @@ function AppNavBar() {
             <Nav.Link href="#savings">Savings</Nav.Link>
             <Nav.Link href="#wishlist">Wishlist</Nav.Link>
             <Nav.Link href="#settings">Settings</Nav.Link>
-            <Nav.Link href="#profile" className='ml-auto'>
-                <PersonCircle size={32} style={{padding: "0px 10px 0px 0px"}}/>
-            </Nav.Link>
-            <Nav.Link onClick={signOut}>
-                <BoxArrowRight size={30}/>
-            </Nav.Link>
+            <Nav.Item>
+                <Row className='flex-nowrap'>
+                    <Nav.Link href="#profile" className='ml-auto'>
+                        <PersonCircle size={32} style={{padding: "0px 10px 0px 0px"}}/>
+                        {localStorage.getItem("name") ? localStorage.getItem("name") + " " + localStorage.getItem("lastname") : ""}
+                    </Nav.Link>
+                    <Nav.Link onClick={signOut}>
+                        <BoxArrowRight size={28}/>
+                    </Nav.Link>
+                </Row>
+            </Nav.Item>
             </Nav>
         </Navbar.Collapse>
         </Container>

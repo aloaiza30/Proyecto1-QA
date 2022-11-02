@@ -31,12 +31,20 @@ export default class MyApp extends App {
     }
   };
 
-  signIn = (userEmail) => {
-    localStorage.setItem('email', userEmail);
+  signIn = (jsonData) => {
+    localStorage.setItem('id', jsonData.id);
+    localStorage.setItem('name', jsonData.name);
+    localStorage.setItem('lastname', jsonData.lastName);
+    localStorage.setItem('email', jsonData.email);
+    localStorage.setItem('monthlyEarnings', jsonData.monthlyEarnings)
 
     this.setState(
       {
-        email: userEmail
+        id: jsonData.id,
+        name: jsonData.name,
+        lastname: jsonData.lastName,
+        email: jsonData.email,
+        monthlyEarnings: jsonData.monthlyEarnings,
       },
       () => {
         Router.push('/report');
@@ -45,9 +53,17 @@ export default class MyApp extends App {
   };
 
   signOut = () => {
-    localStorage.removeItem('email');
+    localStorage.clear();
     this.setState({
-      email: null
+      id: null,
+      name: null,
+      lastname: null,
+      email: null,
+      monthlyEarnings: null,
+      categories: null,
+      payments: null,
+      savings: null,
+      wishlist: null,
     });
     Router.push('/login');
   };
@@ -56,7 +72,10 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <UserContext.Provider value={{ user: this.state.user, signIn: this.signIn, signOut: this.signOut}}>
+      <UserContext.Provider value={{ id: this.state.id, username: this.state.username, lastname: this.state.lastname,
+                                     email: this.state.email, monthlyEarnings: this.state.monthlyEarnings, categories: this.state.categories,
+                                     payments: this.state.payments, savings: this.state.savings, wishlist: this.state.wishlist, 
+                                     signIn: this.signIn, signOut: this.signOut}}>
         <Component {...pageProps} />
       </UserContext.Provider>
     );
