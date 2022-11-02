@@ -7,15 +7,14 @@ import javax.persistence.Id;
 import java.time.Month;
 
 @Entity
-public class Savings {
+public class MonthlySavings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     Month month;
     Float monthlySavings;
-    Float totalSavings;
 
-    public Savings() {
+    public MonthlySavings() {
     }
 
     public Integer getId() {
@@ -36,13 +35,5 @@ public class Savings {
 
     public void setMonthlySavings(Float monthlySavings) {
         this.monthlySavings = monthlySavings;
-    }
-
-    public Float getTotalSavings() {
-        return totalSavings;
-    }
-
-    public void setTotalSavings(Float totalSavings) {
-        this.totalSavings = totalSavings;
     }
 }
