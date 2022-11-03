@@ -39,7 +39,7 @@ public class Savings {
         return totalSavings;
     }
 
-    public void setTotalSavings(Float totalSavings) {
+    public void setTotalSavings() {
         this.totalSavings = totalSavings;
     }
 
@@ -47,7 +47,7 @@ public class Savings {
         return goal;
     }
 
-    public void setGoal(Float goal) {
+    public void setGoal() {
         this.goal = goal;
     }
 
@@ -55,7 +55,7 @@ public class Savings {
         return monthlySavingsList;
     }
 
-    public void setMonthlySavingsList(List<MonthlySavings> monthlySavingsList) {
+    public void setMonthlySavingsList() {
         this.monthlySavingsList = monthlySavingsList;
     }
 }

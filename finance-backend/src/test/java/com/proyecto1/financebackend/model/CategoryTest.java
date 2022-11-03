@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@Epic("User Model Tests")
+@Epic("Category Model Tests")
 @Feature("Get and Set User Atributes")
 public class CategoryTest {
     Category category = new Category();
