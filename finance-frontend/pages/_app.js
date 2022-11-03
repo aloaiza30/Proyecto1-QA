@@ -43,10 +43,10 @@ export default class MyApp extends App {
     localStorage.setItem('lastName', jsonData.lastName);
     localStorage.setItem('email', jsonData.email);
     localStorage.setItem('monthlyEarnings', jsonData.monthlyEarnings);
-    localStorage.setItem('categories', JSON.stringify(jsonData.categories));
-    localStorage.setItem('payments', JSON.stringify(jsonData.payments));
-    localStorage.setItem('savings', JSON.stringify(jsonData.savings));
-    localStorage.setItem('wishlist', JSON.stringify(jsonData.wishlist));
+    localStorage.setItem('categories', jsonData.categories ? JSON.stringify(jsonData.categories) : []);
+    localStorage.setItem('payments', jsonData.payments ? JSON.stringify(jsonData.payments) : []);
+    localStorage.setItem('savings', jsonData.savings ? JSON.stringify(jsonData.savings) : {});
+    localStorage.setItem('wishlist', jsonData.wishlist ? JSON.stringify(jsonData.wishlist) : []);
 
     this.setState(
       {
@@ -55,10 +55,10 @@ export default class MyApp extends App {
         lastName: jsonData.lastName,
         email: jsonData.email,
         monthlyEarnings: jsonData.monthlyEarnings,
-        categories: jsonData.categories,
-        payments: jsonData.payments,
-        savings: jsonData.savings,
-        wishlist: jsonData.wishlist,
+        categories: jsonData.categories ? jsonData.categories : [],
+        payments: jsonData.payments ? jsonData.payments : [],
+        savings: jsonData.savings ? jsonData.savings : {},
+        wishlist: jsonData.wishlist ? jsonData.wishlist : [],
       },
       () => {
         Router.push('/report');

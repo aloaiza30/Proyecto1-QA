@@ -35,7 +35,7 @@ function SavingsSummary() {
                         <Row className='flex-row p-3'>
                             <Card style={{border: 'none'}}>
                                 <Container style={{padding: "0px 50px 0px 50px"}}>
-                                    <Row style={{height: "30px"}}>
+                                    <Row className='fs-5' style={{height: "30px"}}>
                                         <ModalBody className='d-flex w-25 justify-content-center'>
                                             ID
                                         </ModalBody>
