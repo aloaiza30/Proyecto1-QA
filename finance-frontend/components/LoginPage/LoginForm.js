@@ -15,7 +15,7 @@ function LoginForm() {
 
     async function autenticate(e) {
         e.preventDefault();
-        if (userEmail != '' || password != '') {
+        if (!(userEmail == '' || password == '')) {
             let data = {'email': userEmail, 'password': password};
             axios.post("http://localhost:8080/user/login", 
                 JSON.stringify(data), {

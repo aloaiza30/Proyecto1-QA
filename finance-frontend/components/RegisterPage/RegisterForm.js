@@ -18,7 +18,7 @@ function RegisterForm() {
 
     async function autenticate(e) {
         e.preventDefault();
-        if (userName != '' || lastName != '' || userEmail != '' || password != '' || monthlyEarnings != 0) {
+        if (!(userName == '' || lastName == '' || userEmail == '' || password == '' || monthlyEarnings == 0)) {
             let data = {'userName': userName, 'lastName': lastName, 'email': userEmail, 'password': password, 'monthlyEarnings': monthlyEarnings, categories: [], payments: [], savings: {}, wishlist: []};
 
             console.log("🚀 ~ file: RegisterForm.js ~ line 24 ~ autenticate ~ data", data)
