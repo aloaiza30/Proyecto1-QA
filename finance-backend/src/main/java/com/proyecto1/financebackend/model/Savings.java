@@ -1,5 +1,8 @@
 package com.proyecto1.financebackend.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +13,8 @@ public class Savings {
     Integer id;
     Float totalSavings;
     Float goal;
-    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<MonthlySavings> monthlySavingsList;
 
     public Savings() {

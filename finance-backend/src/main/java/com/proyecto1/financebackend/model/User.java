@@ -1,5 +1,7 @@
 package com.proyecto1.financebackend.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
@@ -18,10 +20,13 @@ public class User {
     Float monthlyEarnings;
     @OneToOne(cascade = CascadeType.ALL)
     Savings savings;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL)
     List<Category> categories;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
     List<Payment> payments;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
     List<Product> wishlist;
 

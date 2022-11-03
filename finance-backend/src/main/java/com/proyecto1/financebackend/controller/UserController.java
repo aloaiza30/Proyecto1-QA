@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.StringJoiner;
 
 @RestController
 @RequestMapping("/user")
@@ -56,6 +57,19 @@ public class UserController {
             } else {
                 return new ResponseEntity<>( "Wrong Credentials", HttpStatus.UNAUTHORIZED);
             }
+        } else {
+            return new ResponseEntity<>("User Not Found", HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping("/deleteUser")
+    public ResponseEntity<String> deleteUser(@RequestParam Integer id) {
+        if (userService.getUserById(id).isPresent()) {
+            try {
+                userService.deleteUser(id);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Error while deleting user", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return ResponseEntity.ok("User deleted successfully");
         } else {
             return new ResponseEntity<>("User Not Found", HttpStatus.NOT_FOUND);
         }

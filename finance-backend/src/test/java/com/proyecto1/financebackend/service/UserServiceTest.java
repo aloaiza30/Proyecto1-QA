@@ -70,7 +70,8 @@ public class UserServiceTest {
     @Order(2)
     @Test
     public void getUserCategories() {
-        Optional<List<Category>> categories = userService.getUserCategories(user.getId());
+        Integer id = userService.getUserByEmail("fake@email.com").get().getId();
+        Optional<List<Category>> categories = userService.getUserCategories(id);
         assertTrue(categories.get().stream().anyMatch(category -> Objects.equals(category.getName(), "House")));
     }
 
@@ -79,7 +80,8 @@ public class UserServiceTest {
     @Order(3)
     @Test
     public void getUserSavings() {
-        Optional<Savings> savings = userService.getUserSavings(user.getId());
+        Integer id = userService.getUserByEmail("fake@email.com").get().getId();
+        Optional<Savings> savings = userService.getUserSavings(id);
         assertEquals(savings.get().getGoal(), 20000F);
     }
 
@@ -117,7 +119,7 @@ public class UserServiceTest {
     @Test
     public void deleteUser() {
         Optional<User> user1 = userService.getUserByEmail(user.getEmail());
-        userService.deleteUser(user.getId());
+        userService.deleteUser(user1.get().getId());
     }
 
 }
