@@ -16,6 +16,13 @@ public class Savings {
     public Savings() {
     }
 
+    public Savings(Integer id, Float totalSavings, Float goal, List<MonthlySavings> monthlySavingsList) {
+        this.id = id;
+        this.totalSavings = totalSavings;
+        this.goal = goal;
+        this.monthlySavingsList = monthlySavingsList;
+    }
+
     public Integer getId() {
         return id;
     }

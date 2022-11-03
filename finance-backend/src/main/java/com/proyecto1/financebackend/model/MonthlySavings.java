@@ -17,6 +17,12 @@ public class MonthlySavings {
     public MonthlySavings() {
     }
 
+    public MonthlySavings(Integer id, Month month, Float monthlySavings) {
+        this.id = id;
+        this.month = month;
+        this.monthlySavings = monthlySavings;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -26,6 +26,20 @@ public class User {
     public User() {
     }
 
+    public User(Integer id, String userName, String lastName, String email, String password, Float monthlyEarnings,
+                Savings savings, List<Category> categories, List<Payment> payments, List<Product> wishlist) {
+        this.id = id;
+        this.userName = userName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.monthlyEarnings = monthlyEarnings;
+        this.savings = savings;
+        this.categories = categories;
+        this.payments = payments;
+        this.wishlist = wishlist;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -48,6 +62,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Float getMonthlyEarnings() {

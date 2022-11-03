@@ -17,6 +17,13 @@ public class Category {
     public Category() {
     }
 
+    public Category(Integer id, String name, Float monthlyBudget, Float totalSpent) {
+        this.id = id;
+        this.name = name;
+        this.monthlyBudget = monthlyBudget;
+        this.totalSpent = totalSpent;
+    }
+
     public Integer getId() {
         return id;
     }

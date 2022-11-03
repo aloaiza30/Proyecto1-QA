@@ -12,10 +12,18 @@ public class Product {
     Integer id;
     String name;
     Float Price;
-    Byte photo;
+    byte[] photo;
     boolean Purchaseable;
 
     public Product() {
+    }
+
+    public Product(Integer id, String name, Float price, byte[] photo, boolean purchaseable) {
+        this.id = id;
+        this.name = name;
+        Price = price;
+        this.photo = photo;
+        Purchaseable = purchaseable;
     }
 
     public Integer getId() {
@@ -30,7 +38,7 @@ public class Product {
         return Price;
     }
 
-    public Byte getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
@@ -46,7 +54,7 @@ public class Product {
         Price = price;
     }
 
-    public void setPhoto(Byte photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

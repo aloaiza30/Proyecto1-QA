@@ -21,6 +21,17 @@ public class Payment {
     public Payment() {
     }
 
+    public Payment(Integer id, String name, Category category, Date date, Float paid, Float billed, Float received, Status status) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.date = date;
+        this.paid = paid;
+        this.billed = billed;
+        this.received = received;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }
