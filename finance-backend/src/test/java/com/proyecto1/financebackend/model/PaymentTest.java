@@ -25,7 +25,9 @@ public class PaymentTest {
 
     @BeforeEach
     public void setUp() {
-        List<Payment> payments = new ArrayList<Payment>();
+        Category category = new Category(1, "Personal", 3000F, 100F);
+        payment = new Payment(1, "iPhone", category, Date.valueOf(LocalDate.now()),
+                1000F, 1000F, 0F, Status.PAID);
     }
 
     @Story("Get Payment Id")
@@ -39,7 +41,7 @@ public class PaymentTest {
     @Description("This test get the name of the payment")
     @Test
     public void getName() {
-        assertEquals(payment.getName(), "Dog pills");
+        assertEquals(payment.getName(), "iPhone");
     }
 
     @Story("Set Payment Name")
@@ -47,42 +49,36 @@ public class PaymentTest {
     @Test
     public void setName() {
         payment.setName("Dog pills");
-        assertEquals(this.payment.getName(), "Dog pills");
+        assertEquals(payment.getName(), "Dog pills");
     }
 
-    @Story("Get payment Categories")
+    @Story("Get payment Category")
     @Description("This test get the categories of the payment")
     @Test
     public void getCategory() {
-        assertAll(
-                () -> assertEquals(payment.getCategory().getId(), 1),
-                () -> assertEquals(payment.getCategory().getName(), "Dog pills"),
-                () -> assertEquals(payment.getCategory().getTotalSpent(12F), 500F)
-        );
+        assertEquals(payment.getCategory().getName(), "Personal");
     }
 
     @Story("Get Payment Date")
     @Description("This test get the date of the payment")
     @Test
     public void getDate() {
-        payment.getDate();
-        assertEquals(this.payment.getDate(), Date.valueOf(LocalDate.now()));
+        assertEquals(payment.getDate(), Date.valueOf(LocalDate.now()));
     }
 
     @Story("Set Payment Date")
     @Description("This test set the date of the payment")
     @Test
     public void setDate() {
-        payment.setDate(Date.valueOf(LocalDate.now()));
-        assertEquals(this.payment.getDate(), 12);
+        payment.setDate(Date.valueOf(LocalDate.of(2002, 1, 1)));
+        assertEquals(payment.getDate(), Date.valueOf(LocalDate.of(2002, 1, 1)));
     }
 
     @Story("Get Paid")
     @Description("This test get paid")
     @Test
     public void getPaid() {
-        payment.getPaid();
-        assertEquals(this.payment.getPaid(), 190F);
+        assertEquals(payment.getPaid(), 1000F);
 
     }
 
@@ -90,8 +86,8 @@ public class PaymentTest {
     @Description("This test set paid")
     @Test
     public void setPaid() {
-        payment.setPaid(128F);
-        assertEquals(this.payment.getPaid(), 190F);
+        payment.setPaid(500F);
+        assertEquals(payment.getPaid(), 500F);
 
     }
 
@@ -99,8 +95,7 @@ public class PaymentTest {
     @Description("This test get billed")
     @Test
     public void getBilled() {
-        payment.getBilled();
-        assertEquals(this.payment.getBilled(), 190F);
+        assertEquals(payment.getBilled(), 1000F);
 
     }
 
@@ -108,8 +103,8 @@ public class PaymentTest {
     @Description("This test set billed")
     @Test
     public void setBilled() {
-        payment.setBilled(123F);
-        assertEquals(this.payment.getBilled(), 123F);
+        payment.setBilled(1500F);
+        assertEquals(payment.getBilled(), 1500F);
 
     }
 
@@ -117,8 +112,7 @@ public class PaymentTest {
     @Description("This test get received")
     @Test
     public void getReceived() {
-        payment.getReceived();
-        assertEquals(this.payment.getReceived(), 0F);
+        assertEquals(payment.getReceived(), 0F);
 
     }
 
@@ -126,16 +120,15 @@ public class PaymentTest {
     @Description("This test set received")
     @Test
     public void setReceived() {
-        payment.setReceived(0F);
-        assertEquals(this.payment.getReceived(), 0F);
+        payment.setReceived(100F);
+        assertEquals(payment.getReceived(), 100F);
     }
 
     @Story("Get Status")
     @Description("This test get status")
     @Test
     public void getStatus() {
-        payment.getStatus();
-        assertEquals(this.payment.getStatus(), Status.PENDING);
+        assertEquals(payment.getStatus(), Status.PAID);
     }
 
     @Story("Set Status")
@@ -143,6 +136,6 @@ public class PaymentTest {
     @Test
     public void setStatus() {
         payment.setStatus(Status.PENDING);
-        assertEquals(this.payment.getStatus(), Status.PENDING);
+        assertEquals(payment.getStatus(), Status.PENDING);
     }
 }

@@ -94,7 +94,7 @@ public class UserServiceTest {
         assertEquals(user1.get().getEmail(), "fake@email.com");
     }
 
-    @Story("Get Non Existent User By Email")
+    @Story("Get User By Email")
     @Description("This test will try to get the user by non existent email in the database")
     @Order(5)
     @Test
@@ -104,22 +104,13 @@ public class UserServiceTest {
     }
 
 
-    @Story("Get Non Existent User By Email")
+    @Story("Get User By Id")
     @Description("This test will try to get the user by non existent id in the database")
     @Order(6)
     @Test
     public void getUserByNonExistentId() {
         Optional<User> user1 = userService.getUserById(1000);
         assertFalse(user1.isPresent());
-    }
-
-    @Story("Delete User from Database")
-    @Description("This test will try to delete the user in the database")
-    @Order(7)
-    @Test
-    public void deleteUser() {
-        Optional<User> user1 = userService.getUserByEmail(user.getEmail());
-        userService.deleteUser(user1.get().getId());
     }
 
 }

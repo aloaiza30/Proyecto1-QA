@@ -2,12 +2,10 @@ package com.proyecto1.financebackend.controller;
 
 import com.proyecto1.financebackend.DTO.LoginDTO;
 import com.proyecto1.financebackend.model.*;
-import com.proyecto1.financebackend.service.user.UserService;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -24,8 +22,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,8 +59,9 @@ public class UserControllerTest {
     @Order(1)
     @Test
     public void registerUserTest() {
-        userController.deleteUser(1);
-        ResponseEntity<String> response =  userController.registerUser(user);
+        ResponseEntity<String> response =  userController.registerUser(
+                new User(3, "Jane", "Doe", "jane@doe.com", "password",
+                12345F, new Savings(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
         assertEquals(response.getStatusCodeValue(), HttpStatus.OK.value());
     }
 
@@ -113,8 +110,10 @@ public class UserControllerTest {
     @Order(5)
     @Test
     public void deleteUserTest() {
-        userController.registerUser(user);
-        ResponseEntity<String> response =  userController.deleteUser(2);
+        userController.registerUser(
+                new User(1, "Test", "Test", "test@test.com", "password",
+                        12345F, new Savings(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+        ResponseEntity<String> response =  userController.deleteUser(1);
         assertEquals(response.getStatusCodeValue(), HttpStatus.OK.value());
     }
 

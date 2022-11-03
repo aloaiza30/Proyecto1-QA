@@ -23,12 +23,8 @@ public class MonthlySavingsTest {
     MonthlySavings monthlySavings = new MonthlySavings();
 
     @BeforeEach
-
     public void setUp() {
-        List<MonthlySavings> monthlySavingsList = new ArrayList<MonthlySavings>();
-        monthlySavingsList.add(new MonthlySavings(1, Month.JANUARY, 2500F));
-        monthlySavingsList.add(new MonthlySavings(2, Month.FEBRUARY, 7500F));
-        Savings savings = new Savings(1, 10000F, 20000F, monthlySavingsList);
+        monthlySavings = new MonthlySavings(1, Month.JANUARY, 2500F);
     }
 
     @Story("Get MonthlySavings Id")
@@ -42,22 +38,23 @@ public class MonthlySavingsTest {
     @Description("This test set the id of the monthlySavings")
     @Test
     public void setId() {
-        assertEquals(monthlySavings.getId(), 1);
+        monthlySavings.setId(2);
+        assertEquals(monthlySavings.getId(), 2);
     }
 
     @Story("get Month")
     @Description("This test Get the id of the month")
     @Test
     public void getMonth() {
-        assertEquals(monthlySavings.getMonth(), 1);
+        assertEquals(monthlySavings.getMonth(), Month.JANUARY);
     }
 
     @Story("Set Month")
     @Description("This test set the id of the month")
     @Test
     public void setMonth() {
-        monthlySavings.setMonth(Month.JANUARY);
-        assertEquals(monthlySavings.getMonth(), 1);
+        monthlySavings.setMonth(Month.FEBRUARY);
+        assertEquals(monthlySavings.getMonth(), Month.FEBRUARY);
 
     }
 
@@ -65,7 +62,7 @@ public class MonthlySavingsTest {
     @Description("This test set the MonthlySavings")
     @Test
     public void getMonthlySavings() {
-        assertEquals(monthlySavings.getMonthlySavings(), 1F);
+        assertEquals(monthlySavings.getMonthlySavings(), 2500F);
 
     }
 
@@ -73,8 +70,8 @@ public class MonthlySavingsTest {
     @Description("This test set the MonthlySavings")
     @Test
     public void setMonthlySavings() {
-        monthlySavings.setMonthlySavings(111F);
-        assertEquals(monthlySavings.getMonthlySavings(), 1);
+        monthlySavings.setMonthlySavings(3000F);
+        assertEquals(monthlySavings.getMonthlySavings(), 3000F);
 
     }
 

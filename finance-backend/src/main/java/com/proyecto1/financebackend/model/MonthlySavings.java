@@ -27,6 +27,10 @@ public class MonthlySavings {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Month getMonth() {
         return month;
     }

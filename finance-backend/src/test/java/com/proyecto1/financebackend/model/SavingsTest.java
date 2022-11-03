@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 @SpringBootTest
 @Epic("Savings Model Tests")
@@ -26,7 +27,7 @@ public class SavingsTest {
         List<MonthlySavings> monthlySavingsList = new ArrayList<MonthlySavings>();
         monthlySavingsList.add(new MonthlySavings(1, Month.JANUARY, 2500F));
         monthlySavingsList.add(new MonthlySavings(2, Month.FEBRUARY, 7500F));
-        Savings savings = new Savings(1, 10000F, 20000F, monthlySavingsList);
+        savings = new Savings(1, 10000F, 20000F, monthlySavingsList);
     }
 
     @Story("Get Savings Id")
@@ -40,57 +41,56 @@ public class SavingsTest {
     @Description("This test set the id of the savings")
     @Test
     public void setId() {
-        assertEquals(savings.getId(), 1);
+        savings.setId(2);
+        assertEquals(savings.getId(), 2);
     }
 
     @Story("Get total Savings ")
     @Description("This test get the total of the Savings")
     @Test
     public void getTotalSavings() {
-        savings.setTotalSavings();
-        assertEquals(savings.getTotalSavings(), 12F);
+        assertEquals(savings.getTotalSavings(), 10000F);
     }
 
     @Story("Set total Savings ")
     @Description("This test set the total of the Savings")
     @Test
     public void setTotalSavings() {
-        assertEquals(savings.getTotalSavings(), 12F);
+        savings.setTotalSavings(20000F);
+        assertEquals(savings.getTotalSavings(), 20000F);
     }
 
     @Story("Get Category Goal")
     @Description("This test get the name of the goal")
     @Test
     public void getGoal() {
-        savings.getGoal();
-        assertEquals(this.savings.getGoal(), 1F);
+        assertEquals(savings.getGoal(), 20000F);
     }
 
     @Story("Set Category Goal")
     @Description("This test set the name of the goal")
     @Test
     public void setGoal() {
-        savings.setGoal();
-        assertEquals(this.savings.getGoal(), 1F);
+        savings.setGoal(30000F);
+        assertEquals(savings.getGoal(), 30000F);
     }
 
     @Story("Get Monthly Savings List")
     @Description("This test get Monthly Savings List")
     @Test
     public void getMonthlySavingsList() {
-        savings.getMonthlySavingsList();
-        assertEquals(this.savings.getMonthlySavingsList(), 4F);
+        assertEquals(savings.getMonthlySavingsList().toArray().length, 2);
     }
 
     @Story("Set Monthly Savings List")
     @Description("This test set Monthly Savings List")
     @Test
     public void setMonthlySavingsList() {
-        savings.setMonthlySavingsList();
-        assertEquals(this.savings.getMonthlySavingsList(), 4F);
+        List<MonthlySavings> monthlySavingsList = new ArrayList<MonthlySavings>();
+        monthlySavingsList.add(new MonthlySavings(1, Month.JANUARY, 2500F));
+        monthlySavingsList.add(new MonthlySavings(2, Month.FEBRUARY, 7500F));
+        savings.setMonthlySavingsList(monthlySavingsList);
+        assertSame(savings.getMonthlySavingsList(), monthlySavingsList);
     }
-
-
-
 
 }
