@@ -10,12 +10,17 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    public User saveUser(User user);
-    public Optional<List<Category>> getUserCategories(Integer id);
+    User saveUser(User user);
+    Optional<List<Category>> getUserCategories(Integer id);
 
     Optional<Savings> getUserSavings(Integer id);
+    Optional<User> getUserByEmail(String email);
+    Optional<User> getUserById(Integer id);
 
-    public Optional<User> getUserByEmail(String email);
+    void deleteUser(Integer id);
+
+
+
     }
 
 

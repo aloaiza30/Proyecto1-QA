@@ -6,6 +6,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+@SpringBootTest
 @Epic("User Model Tests")
 @Feature("Get and Set User Atributes")
 public class UserTest {

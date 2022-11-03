@@ -1,5 +1,7 @@
 package com.proyecto1.financebackend.model;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class User {
     Float monthlyEarnings;
     @OneToOne(cascade = CascadeType.ALL)
     Savings savings;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Category> categories;
     @OneToMany(cascade = CascadeType.ALL)
     List<Payment> payments;
