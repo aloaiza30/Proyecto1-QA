@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Epic("Savings Model Tests")
-@Feature("Get and Set User Atributes")
+@Feature("Get and Set Savings Atributes")
 
 public class SavingsTest {
     Savings savings = new Savings();

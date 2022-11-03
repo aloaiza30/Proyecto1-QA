@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Epic("Category Model Tests")
-@Feature("Get and Set User Atributes")
+@Feature("Get and Set Category Atributes")
 public class CategoryTest {
     Category category = new Category();
 
