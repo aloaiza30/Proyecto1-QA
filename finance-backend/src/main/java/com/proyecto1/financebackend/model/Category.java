@@ -36,8 +36,16 @@ public class Category {
         this.name = name;
     }
 
-    public Float getMonthlyBudget(float v) {
+    public Float getMonthlyBudget() {
         return monthlyBudget;
+    }
+
+    public Float getTotalSpent() {
+        return totalSpent;
+    }
+
+    public void setTotalSpent(Float totalSpent) {
+        this.totalSpent = totalSpent;
     }
 
     public void setMonthlyBudget(Float monthlyBudget) {
@@ -48,6 +56,4 @@ public class Category {
         return totalSpent;
     }
 
-    public void setTotalSpent(float v) { this.totalSpent = totalSpent;
-    }
 }
