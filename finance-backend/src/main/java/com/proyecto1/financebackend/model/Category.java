@@ -36,7 +36,7 @@ public class Category {
         this.name = name;
     }
 
-    public Float getMonthlyBudget() {
+    public Float getMonthlyBudget(float v) {
         return monthlyBudget;
     }
 
@@ -44,11 +44,10 @@ public class Category {
         this.monthlyBudget = monthlyBudget;
     }
 
-    public Float getTotalSpent() {
+    public Float getTotalSpent(float v) {
         return totalSpent;
     }
 
-    public void setTotalSpent(Float totalSpent) {
-        this.totalSpent = totalSpent;
+    public void setTotalSpent(float v) { this.totalSpent = totalSpent;
     }
 }

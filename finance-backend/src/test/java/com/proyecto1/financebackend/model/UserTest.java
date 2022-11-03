@@ -122,7 +122,7 @@ public class UserTest {
         assertAll(
                 () -> assertEquals(user.getCategories().stream().findFirst().get().getId(), 1),
                 () -> assertEquals(user.getCategories().stream().findFirst().get().getName(), "House"),
-                () -> assertEquals(user.getCategories().stream().findFirst().get().getTotalSpent(), 500F)
+                () -> assertEquals(user.getCategories().stream().findFirst().get().getTotalSpent(12F), 500F)
         );
     }
 
