@@ -12,7 +12,7 @@ function AppNavBar() {
     return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#206ccb"}}>
         <Container>
-        <Navbar.Brand className="fs-2 fw-bold" style={{fontFamily: "Montserrat"}} href="#home">Finance</Navbar.Brand>
+        <Navbar.Brand className="fs-2 fw-bold" style={{fontFamily: 'Arial'}} href="/report">Finance</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse className= "d-flex" id="responsive-navbar-nav" style={{fontSize: "18px"}}>
             <Nav className='d-flex flex-fill nav-center justify-content-around'>

@@ -25,7 +25,6 @@ ChartJS.register(
 
 function ReportSummary() {
     const { categories } = useContext(UserContext);
-    console.log("🚀 ~ file: ReportSummary.js ~ line 28 ~ ReportSummary ~ categories", categories);
     
     return (
         <Container>

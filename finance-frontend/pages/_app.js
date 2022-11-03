@@ -14,17 +14,25 @@ export default class MyApp extends App {
     monthlyEarnings: 0,
     categories: [],
     payments: [],
-    savings: [],
+    savings: {},
     wishlist: [],
   };
 
   componentDidMount = () => {
-    const email = localStorage.getItem(email);
-    if (email) {
+    //const email = localStorage.getItem(id);
+    if (localStorage.getItem("id")) {
       this.setState({
-        email
+        id: localStorage.getItem("id"),
+        userName: localStorage.getItem("userName"),
+        lastName: localStorage.getItem("lastName"),
+        email: localStorage.getItem("email"),
+        monthlyEarnings: localStorage.getItem("monthlyEarning"),
+        categories: JSON.parse(localStorage.getItem("categories")),
+        payments: JSON.parse(localStorage.getItem("payments")),
+        savings: JSON.parse(localStorage.getItem("savings")),
+        wishlist: JSON.parse(localStorage.getItem("wishlist")),
       });
-    } else if (!Router.pathname == "/register") {
+    } else if (!(Router.pathname == '/login') && !(Router.pathname == '/register') && !(Router.pathname == '/')) {
       Router.push('/login');
     }
   };
@@ -35,10 +43,10 @@ export default class MyApp extends App {
     localStorage.setItem('lastName', jsonData.lastName);
     localStorage.setItem('email', jsonData.email);
     localStorage.setItem('monthlyEarnings', jsonData.monthlyEarnings);
-    localStorage.setItem('categories', jsonData.categories);
-    localStorage.setItem('payments', jsonData.payments);
-    localStorage.setItem('savings', jsonData.savings);
-    localStorage.setItem('wishlist', jsonData.wishlist);
+    localStorage.setItem('categories', JSON.stringify(jsonData.categories));
+    localStorage.setItem('payments', JSON.stringify(jsonData.payments));
+    localStorage.setItem('savings', JSON.stringify(jsonData.savings));
+    localStorage.setItem('wishlist', JSON.stringify(jsonData.wishlist));
 
     this.setState(
       {
@@ -69,7 +77,7 @@ export default class MyApp extends App {
       monthlyEarnings: 0,
       categories: [],
       payments: [],
-      savings: [],
+      savings: {},
       wishlist: [],
     });
   };
@@ -80,7 +88,8 @@ export default class MyApp extends App {
     return (
       <UserContext.Provider value={{ id: this.state.id, userName: this.state.userName, lastName: this.state.lastName,
                                      email: this.state.email, monthlyEarnings: this.state.monthlyEarnings, categories: this.state.categories,
-                                     payments: this.state.payments, savings: this.state.savings, wishlist: this.state.wishlist, signIn: this.signIn, signOut: this.signOut}}>
+                                     payments: this.state.payments, savings: this.state.savings, wishlist: this.state.wishlist, signIn: this.signIn, 
+                                     signOut: this.signOut, restoreInfo: this.restoreInfo}}>
         <Component {...pageProps} />
       </UserContext.Provider>
     );

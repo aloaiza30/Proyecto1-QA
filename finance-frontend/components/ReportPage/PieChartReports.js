@@ -8,7 +8,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 function PieChartReports() {
     const {categories, savings} = useContext(UserContext);
-    
+    console.log("🚀 ~ file: PieChartReports.js ~ line 11 ~ PieChartReports ~ savings", savings)
+
     return (
         <Container className="w-75">
             <Row>
