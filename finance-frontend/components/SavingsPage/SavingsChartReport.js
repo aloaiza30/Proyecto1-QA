@@ -1,3 +1,4 @@
+/* Importing the necessary components for the page. */
 import { Container, ModalTitle, Row } from "react-bootstrap";
 import {
     Chart as ChartJS,
@@ -10,10 +11,11 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-import { Pie, Doughnut, Line } from 'react-chartjs-2';
-import { useContext, useEffect } from "react";
+import { Doughnut, Line } from 'react-chartjs-2';
+import { useContext } from "react";
 import UserContext from "../UserContext";
 
+/* Registering the components that are being used in the chart. */
 ChartJS.register(
     ArcElement, 
     CategoryScale,
@@ -25,14 +27,18 @@ ChartJS.register(
     Legend
 );
 
-function SavingsChartReports() {
+/**
+ * This function is a React functional component that returns a doughnut chart, and a line chart
+ * @returns A container with a doughnut chart, and a line chart.
+ */
+export default function SavingsChartReports() {
+    /* This is destructuring the savings object from the UserContext. */
     const { savings } = useContext(UserContext);
     let months = savings.monthlySavingsList ? savings.monthlySavingsList : [];
-    console.log("🚀 ~ file: SavingsChartReport.js ~ line 31 ~ SavingsChartReports ~ savings.monthlySavingsList", savings.monthlySavingsList)
-    console.log("🚀 ~ file: SavingsChartReport.js ~ line 31 ~ SavingsChartReports ~ months", months)
-
     
-    
+    /** This is returning a container with a doughnut chart, and a line chart displaying
+     * the savings summary.
+     */
     return (
         <Container className="w-75">
             <Row>
@@ -110,4 +116,3 @@ function SavingsChartReports() {
         </Container>
     );
 }
-export default SavingsChartReports;

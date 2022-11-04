@@ -1,3 +1,4 @@
+/* Importing the necessary components for the page. */
 import { Card, ModalTitle, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import {
@@ -14,6 +15,7 @@ import { ExclamationCircleFill } from 'react-bootstrap-icons';
 import { useContext } from 'react';
 import UserContext from '../UserContext';
 
+/* Registering the components that are used in the chart. */
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -23,9 +25,20 @@ ChartJS.register(
     Legend
   );
 
-function ReportSummary() {
+/**
+ * This function renders a card that displays a bar graph for each category. The bar graph is a visual
+ * representation of the total spent in that category and the remaining budget for that category
+ * @returns A card with the total spent and the monthly budget of the user, and an exclamation point
+ * if the total spent is greater than the monthly budget.
+ */
+export default function ReportSummary() {
+    /* Destructuring the categories from the UserContext. */
     const { categories } = useContext(UserContext);
     
+    /* This is the return statement for the ReportSummary function. It returns a card that displays a
+     * bar graph for each category. The bar graph is a visual representation of the total spent in each
+     * category and the remaining budget for that category.
+     */
     return (
         <Container>
             <Card className='p-3 shadow-lg bg-white' style={{borderRadius: "50px"}}>
@@ -92,4 +105,3 @@ function ReportSummary() {
         </Container>
     );
 }
-export default ReportSummary;

@@ -1,15 +1,26 @@
+/* This is importing the necessary components to create the pie chart. */
 import { Container, ModalTitle, Row } from "react-bootstrap";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 import { Pie, Doughnut } from 'react-chartjs-2';
 import { useContext } from "react";
 import UserContext from "../UserContext";
 
+/** This is registering the necessary components to create the pie chart a
+ *  and doughnut chart. 
+ */
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-function PieChartReports() {
+/**
+ * This function is a React component that renders a pie chart and a doughnut chart using the Chart.js
+ * library
+ * @returns A container with a row that contains a modal title, a pie chart, and a doughnut chart.
+ */
+export default function PieChartReports() {
+    /* Destructuring the categories and savings from the UserContext. */
     const {categories, savings} = useContext(UserContext);
-    console.log("🚀 ~ file: PieChartReports.js ~ line 11 ~ PieChartReports ~ savings", savings)
 
+    /* This is returning a container with a row that contains a modal title, a pie chart, and a
+    doughnut chart. */
     return (
         <Container className="w-75">
             <Row>
@@ -82,4 +93,3 @@ function PieChartReports() {
         </Container>
     );
 }
-export default PieChartReports;

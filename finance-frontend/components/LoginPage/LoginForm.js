@@ -1,4 +1,5 @@
-import { Card, Form, Modal, ModalBody, ModalDialog, ModalFooter, ModalHeader, ModalTitle, NavLink, Row } from 'react-bootstrap';
+/* This is importing all the components that we need to use in this file. */
+import { Card, Form, ModalTitle, NavLink, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useContext, useState } from 'react';
@@ -7,12 +8,25 @@ import UserContext from '../UserContext';
 import axios from 'axios';
 
 
-function LoginForm() {
+/**
+ * This function renders a form that allows the user to enter their email and password. When the user
+ * clicks the submit button, the function sends a POST request to the backend with the user's email and
+ * password. If the user's credentials are valid, the backend will return the user model. The function
+ * then stores the user in the browser's local storage and redirects the user to the report page
+ * @returns A login form
+ */
+export default function LoginForm() {
+    /* This is declaring the variables that we will use in this file. */
     const { signIn } = useContext(UserContext);
     const [userEmail, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
+    /**
+     * It takes the email and password from the form, sends it to the server, and if the server returns
+     * the user information and it saves it in the browser's local storage
+     * @param e - the event object
+     */
     async function autenticate(e) {
         e.preventDefault();
         if (!(userEmail == '' || password == '')) {
@@ -37,6 +51,7 @@ function LoginForm() {
         }
     }
 
+    /* This is the HTML code that is rendered when the user visits the login page (login form). */
     return (
         <Container className='w-75'>
             <Card className='p-3 shadow-lg bg-white' style={{borderRadius: "50px"}}>
@@ -71,4 +86,3 @@ function LoginForm() {
         </Container>
     );
 }
-export default LoginForm;

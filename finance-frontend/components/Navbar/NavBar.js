@@ -1,14 +1,23 @@
+/* Importing the components from the react-bootstrap library. */
 import { Row } from 'react-bootstrap';
-import { ArrowRight, BoxArrowRight, Person, PersonCircle } from 'react-bootstrap-icons';
+import { BoxArrowRight, PersonCircle } from 'react-bootstrap-icons';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import UserContext from '../UserContext';
 import { useContext } from 'react';
 
-function AppNavBar() {
-    const { id, userName, lastName, signOut } = useContext(UserContext);
+/**
+ * The AppNavBar function returns a Navbar component that contains the application name,
+ * some other buttons which redirects to other pages in the application and a user icon
+ * with the name of the user
+ * @returns A Navbar component.
+ */
+ export default function AppNavBar() {
+    /* Destructuring the context object. */
+    const { userName, lastName, signOut } = useContext(UserContext);
 
+    /* This is the HTML code that is rendered that contains all the NavBar functionalitites. */
     return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#206ccb"}}>
         <Container>
@@ -25,7 +34,6 @@ function AppNavBar() {
                     <Nav.Link href="#profile" className='ml-auto'>
                         <PersonCircle size={32} style={{padding: "0px 10px 0px 0px"}}/>
                         { userName + " " + lastName }
-                        {/* {localStorage.getItem("name") + " " + localStorage.getItem("lastname")} */}
                     </Nav.Link>
                     <Nav.Link onClick={signOut}>
                         <BoxArrowRight size={30}/>
@@ -38,4 +46,3 @@ function AppNavBar() {
     </Navbar>
     );
 }
-export default AppNavBar;

@@ -1,9 +1,15 @@
-import { Card, Form, ModalBody, ModalTitle, NavLink, Row } from 'react-bootstrap';
+/* Importing the components from the react-bootstrap library. */
+import { Card, ModalBody, ModalTitle, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 
-function TitleContainer() {
+/**
+ * Creates the index interface which displays a title, description
+ * and two simple buttons
+ * @returns A container with a card and a container.
+ */
+export default function TitleContainer() {
     return (
         <Container className='w-75'>
             <Card className='p-3 shadow-lg bg-white' style={{borderRadius: "50px"}}>
@@ -31,4 +37,3 @@ function TitleContainer() {
         </Container>
     );
 }
-export default TitleContainer;

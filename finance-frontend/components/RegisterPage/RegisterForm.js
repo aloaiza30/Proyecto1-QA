@@ -1,4 +1,5 @@
-import { Card, Form, ModalTitle, NavLink, Row } from 'react-bootstrap';
+/* Importing the necessary components to make the form work. */
+import { Card, Form, ModalTitle, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useContext, useState } from 'react';
@@ -7,7 +8,12 @@ import UserContext from '../UserContext';
 import axios from 'axios';
 
 
-function RegisterForm() {
+/**
+ * It's a function that renders a form to register a new user
+ * @returns A form to register a new user
+ */
+ export default function RegisterForm() {
+    /* It's declaring the variables that will be used in the form. */
     const { signIn } = useContext(UserContext);
     const [userName, setUserName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -16,6 +22,10 @@ function RegisterForm() {
     const [monthlyEarnings, setMonthlyEarnings] = useState(0);
     const [message, setMessage] = useState('');
 
+    /**
+     * It takes the user data from the form and sends it to the backend API
+     * @param e - the event that is triggered when the user clicks the submit button
+     */
     async function autenticate(e) {
         e.preventDefault();
         if (!(userName == '' || lastName == '' || userEmail == '' || password == '' || monthlyEarnings == 0)) {
@@ -42,6 +52,7 @@ function RegisterForm() {
         }
     }
 
+    /* This is the HTML code that is rendered that contains a form to register a new user. */
     return (
         <Container className='w-75'>
             <Card className='p-3 shadow-lg bg-white' style={{borderRadius: "50px"}}>
@@ -89,4 +100,3 @@ function RegisterForm() {
         </Container>
     );
 }
-export default RegisterForm;

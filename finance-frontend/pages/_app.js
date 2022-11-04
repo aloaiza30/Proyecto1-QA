@@ -1,11 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
-import "../styles/globals.css";
+/* This is importing the bootstrap css file, the global css file, the App component, the Router
+component, and the UserContext component. */
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from 'next/app';
 import Router from 'next/router';
 import UserContext from '../components/UserContext';
 
+/* Exporting the class MyApp as the default export. */
 export default class MyApp extends App {
+  /* Setting the initial state of the app. */
   state = {
     id: 0,
     userName: '',
@@ -18,6 +21,8 @@ export default class MyApp extends App {
     wishlist: [],
   };
 
+  /* This is checking if the user is logged in. If they are, it sets the state of the app to the user's
+  information. If they are not, it redirects them to the login page. */
   componentDidMount = () => {
     //const email = localStorage.getItem(id);
     if (localStorage.getItem("id")) {
@@ -37,6 +42,7 @@ export default class MyApp extends App {
     }
   };
 
+  /* This is setting the state of the app to the user's information. */
   signIn = (jsonData) => {
     localStorage.setItem('id', jsonData.id);
     localStorage.setItem('userName', jsonData.userName);
@@ -66,6 +72,8 @@ export default class MyApp extends App {
     );
   };
 
+  /* This is the signOut function. It is redirecting the user to the login page, clearing the local
+  storage, and setting the state of the app to the initial state. */
   signOut = () => {
     Router.push('/login');
     localStorage.clear();
@@ -82,6 +90,10 @@ export default class MyApp extends App {
     });
   };
 
+  /**
+   * The render function is a function that returns the component that is being rendered
+   * @returns The component that is being rendered is the component that is being passed in as a prop.
+   */
   render() {
     const { Component, pageProps } = this.props;
 
