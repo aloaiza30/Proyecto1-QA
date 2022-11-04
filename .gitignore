@@ -1,0 +1,60 @@
+### Finance - Frontend ###
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+### Finance - Backend ###
+finance-backend/HELP.md
+finance-backend/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.DS_Store
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+finance-backend/.idea
+finance-backend/*.iws
+finance-backend/*.iml
+finance-backend/*.ipr
+
+### NetBeans ###
+finance-backend/nbproject/private/
+finance-backend/nbbuild/
+finance-backend/dist/
+finance-backend/nbdist/
+finance-backend/.nb-gradle/
+finance-backend/build/
+!**/finance-backend/src/main/**/build/
+!**/finance-backend/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+
