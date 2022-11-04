@@ -1,7 +1,5 @@
 package com.proyecto1.financebackend.service.user;
 
-
-
 import com.proyecto1.financebackend.model.Category;
 import com.proyecto1.financebackend.model.Savings;
 import com.proyecto1.financebackend.model.User;
@@ -9,6 +7,7 @@ import com.proyecto1.financebackend.model.User;
 import java.util.List;
 import java.util.Optional;
 
+// This is the interface for the UserService class.
 public interface UserService {
     User saveUser(User user);
     Optional<List<Category>> getUserCategories(Integer id);
@@ -16,8 +15,6 @@ public interface UserService {
     Optional<User> getUserByEmail(String email);
     Optional<User> getUserById(Integer id);
     void deleteUser(Integer id);
-    //void updateUser(Integer id, User user);
-
-    }
+}
 
 
